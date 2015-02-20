@@ -9,9 +9,10 @@
 	function save(){
 		var b_canvas = document.getElementById("a");
 		var image=b_canvas.toDataURL();
-		var down=document.getElementById("download");
-		down.href=image;
-		down.click();
+		var link = document.createElement("a");
+    		link.download = "";
+    		link.href = image;
+    		link.click();
 	};
 	function setstart(){
 		if(tool=="eraser" || tool=="pen")
@@ -19,14 +20,12 @@
 		c=document.getElementById("a");
 		cord.sx=event.clientX-c.getBoundingClientRect().left;
 		cord.sy=event.clientY-c.getBoundingClientRect().top;
-		console.log(cord);
 	};
 	function setend(){
                 movestate=false;
                 c=document.getElementById("a");
                 cord.ex=event.clientX-c.getBoundingClientRect().left-cord.sx;
                 cord.ey=event.clientY-c.getBoundingClientRect().top-cord.sy;
-                console.log(cord);
 		drawshape();
         };
 	function drawshape(){
@@ -34,7 +33,6 @@
                 var b_context = b_canvas.getContext("2d");
 		b_context.fillStyle=color;
 		b_context.strokeStyle=color;
-		console.log(color);
 		b_context.beginPath();
 		if(tool=="rect"){
 			b_context.strokeRect(cord.sx,cord.sy,cord.ex,cord.ey);
@@ -56,7 +54,11 @@
 			var text=document.getElementById("textbox").value;
 			var size=Math.sqrt(Math.pow(cord.ex,2)+Math.pow(cord.ey,2));
 			b_context.font =size+"px Arial";
-			b_context.textBaseline = "top";
+			console.log(cord);
+			if(cord.ey>=0)
+				b_context.textBaseline = "top";
+			else
+				b_context.textBaseline = "bottom";
 			b_context.fillText(text,cord.sx,cord.sy);
 		};
 		if(tool=="line"){
@@ -78,7 +80,6 @@
                 x=event.clientX-bcan.getBoundingClientRect().left;
                 y=event.clientY-bcan.getBoundingClientRect().top;
                 b.beginPath();
-		console.log(tool,movestate);
 		if (tool=="eraser" && movestate==true){
 			b.clearRect(x,y,5,5);
                 };
@@ -100,7 +101,6 @@
     		y=event.clientY-c.getBoundingClientRect().top;
     		var p=ctx.getImageData(x, y, 1, 1).data;
     		var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2])).slice(-6);
-    		console.log(hex);
     		color=hex;
     		return hex;
 	};
