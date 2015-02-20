@@ -5,8 +5,13 @@ Array.prototype.insert=function(index,item){
 	var cord={};
 	var movestate=false;
 	var color="black";
-	savepoints=[];
-	savecount=-1;
+	var savepoints=[];
+	var savecount=-1;
+	var pointersize=1;
+	function setsize(value){
+		pointersize=value;
+		document.getElementById("sizeofbrush").innerHTML=pointersize;
+	};
 	function settool(x){
 		tool=x;
 		document.getElementById("tooldisplay").innerHTML=tool;
@@ -70,6 +75,7 @@ Array.prototype.insert=function(index,item){
                 var b_context = b_canvas.getContext("2d");
 		b_context.fillStyle=color;
 		b_context.strokeStyle=color;
+		b_context.lineWidth=pointersize;
 		b_context.beginPath();
 		if(tool=="rect"){
 			b_context.strokeRect(cord.sx,cord.sy,cord.ex,cord.ey);
@@ -124,7 +130,8 @@ Array.prototype.insert=function(index,item){
                 };
 		if(tool=="pen" && movestate==true){
 			b.fillStyle=color;
-                        b.fillRect(x,y,3,3);
+			ps=pointersize;
+                        b.fillRect(x,y,ps,ps);
 		};
 	};
         function mycan(){
