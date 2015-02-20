@@ -59,7 +59,7 @@ Array.prototype.insert=function(index,item){
 	function preview(){
                 var b_canvas = document.getElementById("a");
                 var image=b_canvas.toDataURL();
-                window.location.assign(image);
+		window.open(image,'_blank');
         };
 	function setstart(){
 		if(tool=="eraser" || tool=="pen")
