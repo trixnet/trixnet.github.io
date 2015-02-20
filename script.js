@@ -29,21 +29,23 @@ Array.prototype.insert=function(index,item){
 			var img=new Image();
 			if(savecount>0){
                 		img.src = savepoints[savecount-1];
-                		ctx.drawImage(img,0,0);
+                		ctx.drawImage(img,0,0);};
 				savecount--;
-			};
 		};
 	};
 	function redo(){
-                if(savecount<savepoints.length){
+                if(savecount<savepoints.length-1){
                         clearscreen();
                         var c = document.getElementById("a");
                         var ctx = c.getContext("2d");
                         var img=new Image();
-                        img.src = savepoints[savecount];
+			if(savecount!=0)
+				img.src = savepoints[savecount+1];
+			else
+				img.src = savepoints[savecount+1];
                         ctx.drawImage(img,0,0);
 			if(savecount<savepoints.length-1)
-                        savecount++;
+                        	savecount++;
                 };
         };
 	function save(){
@@ -122,15 +124,15 @@ Array.prototype.insert=function(index,item){
 	function moveactions(){
 		var bcan = document.getElementById("a");
                 var b = bcan.getContext("2d");
+		ps=pointersize;
                 x=event.clientX-bcan.getBoundingClientRect().left;
                 y=event.clientY-bcan.getBoundingClientRect().top;
                 b.beginPath();
 		if (tool=="eraser" && movestate==true){
-			b.clearRect(x,y,5,5);
+			b.clearRect(x,y,ps,ps);
                 };
 		if(tool=="pen" && movestate==true){
 			b.fillStyle=color;
-			ps=pointersize;
                         b.fillRect(x,y,ps,ps);
 		};
 	};
