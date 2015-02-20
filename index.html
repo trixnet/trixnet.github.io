@@ -1,0 +1,26 @@
+<title>PaintApp-js</title>
+<div><head>PaintApp
+<script src="script.js"></script>
+</head></div>
+<body onload="mycan()">
+<input type="submit" name="rect" value="rect" onclick="settool('rect')">
+<input type="submit" name="filledcircle" value="filledcircle" onclick="settool('filledcircle')">
+<input type="submit" name="circle" value="circle" onclick="settool('circle')">
+<input type="submit" name="fillrect" value="fillrect" onclick="settool('fillrecr')">
+<input type="submit" name="line" value="line" onclick="settool('line')">
+<input type="submit" name="text" value="text" onclick="settool('text')">
+<input type="text" name="text" id="textbox">
+<input type="submit" name="None" value="None" onclick="settool('None')">
+<input type="submit" name="eraser" value="eraser" onclick="settool('eraser')">
+<input type="submit" name="pen" value="pen" onclick="settool('pen')">
+<input type="submit" value="clearscreen" onclick="clearscreen()">
+<input type="submit" value="save" onclick="save()">
+<p id="tooldisplay"></p>
+<a id="download" style="display:None" download></a>
+<canvas width="500" height="500" id="a" style="border:1px solid #000000; cursor:crosshair" onmousemove="moveactions()"  onmousedown="setstart()" onmouseup="setend()"></canvas>
+<img id="colormap" src="colormap.gif" alt="The Scream"
+width="220" height="277" style="display:None;">
+
+<canvas id="colorcanvas" width="245" height="250" onclick="setcolor()"></canvas>
+</body>
+
