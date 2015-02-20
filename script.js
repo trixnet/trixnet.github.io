@@ -56,6 +56,11 @@ Array.prototype.insert=function(index,item){
     		link.href = image;
     		link.click();
 	};
+	function preview(){
+                var b_canvas = document.getElementById("a");
+                var image=b_canvas.toDataURL();
+                window.location.assign(image);
+        };
 	function setstart(){
 		if(tool=="eraser" || tool=="pen")
 			movestate=true;
