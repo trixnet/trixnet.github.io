@@ -1,11 +1,46 @@
+Array.prototype.insert=function(index,item){
+		this.splice(index,0,item);
+};
 	var tool;
 	var cord={};
 	var movestate=false;
 	var color="black";
+	savepoints=[];
+	savecount=-1;
 	function settool(x){
 		tool=x;
 		document.getElementById("tooldisplay").innerHTML=tool;
 	};
+	function savestate(){
+		var l=document.getElementById("a").toDataURL();
+		savepoints.insert(savecount+1,l);
+		savecount++;
+	};
+	function undo(){
+		if(savecount>=0){
+			clearscreen();
+			var c = document.getElementById("a");
+                	var ctx = c.getContext("2d");
+			var img=new Image();
+			if(savecount>0){
+                		img.src = savepoints[savecount-1];
+                		ctx.drawImage(img,0,0);
+				savecount--;
+			};
+		};
+	};
+	function redo(){
+                if(savecount<savepoints.length){
+                        clearscreen();
+                        var c = document.getElementById("a");
+                        var ctx = c.getContext("2d");
+                        var img=new Image();
+                        img.src = savepoints[savecount];
+                        ctx.drawImage(img,0,0);
+			if(savecount<savepoints.length-1)
+                        savecount++;
+                };
+        };
 	function save(){
 		var b_canvas = document.getElementById("a");
 		var image=b_canvas.toDataURL();
@@ -27,6 +62,8 @@
                 cord.ex=event.clientX-c.getBoundingClientRect().left-cord.sx;
                 cord.ey=event.clientY-c.getBoundingClientRect().top-cord.sy;
 		drawshape();
+		if(tool=="pen" || tool=="eraser")
+			savestate();
         };
 	function drawshape(){
 		var b_canvas = document.getElementById("a");
@@ -69,6 +106,8 @@
 			b_context.stroke();
 			b_context.closePath();
 		};
+		if(tool!="pen" && tool!="eraser")
+			savestate();
 	};
 	function clearscreen(){
                 var b_canvas = document.getElementById("a");
@@ -86,7 +125,7 @@
 		if(tool=="pen" && movestate==true){
 			b.fillStyle=color;
                         b.fillRect(x,y,3,3);
-		}
+		};
 	};
         function mycan(){
     		var c = document.getElementById("colorcanvas");
