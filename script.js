@@ -9,10 +9,6 @@ Array.prototype.insert=function(index,item){
 	var savecount=-1;
 	var pointersize=1;
 	var ol=[];
-	function ollist(){
-		var x=JSON.stringify(ol);
-		alert(x);
-	};
 	function setsize(value){
 		pointersize=value;
 		document.getElementById("sizeofbrush").innerHTML=pointersize;
@@ -192,7 +188,8 @@ b_context.fillRect(0,0,20,20);
     		return ((r << 16) | (g << 8) | b).toString(16);
     	};
 	function setgradient(){
-		document.getElementById("colorcanvas").style.display="inline-block";
+	document.getElementById("grade1sele").style.display="None";
+	document.getElementById("grade2sele").style.display="None";
 		var x=document.getElementById("grade1").innerHTML;
 		var y=document.getElementById("grade2").innerHTML;
 		var c = document.getElementById("a");
@@ -205,12 +202,10 @@ b_context.fillRect(0,0,20,20);
 	function show(x){
 		document.getElementById("colorcanvas").style.display="None";
 		if(x=='grade2sele')
-			document.getElementById("grade1sele").style.display="None";
+		document.getElementById("grade1sele").style.display="None";
 		else
 			document.getElementById("grade2sele").style.display="None";
 		document.getElementById(x).style.display="inline-block";
-		setTimeout(function ok(){document.getElementById(x).style.display="None";
-document.getElementById("colorcanvas").style.display="inline-block";},6000);
 	};
 	function setgrad(t,event,box){
                 var c = document.getElementById(t.id);
@@ -225,4 +220,6 @@ document.getElementById("colorcanvas").style.display="inline-block";},6000);
                 var ctx = c.getContext("2d");
                 ctx.fillStyle=hex;
 		ctx.fillRect(0,0,20,20);
+		document.getElementById("grade1sele").style.display="None";
+        document.getElementById("grade2sele").style.display="None";
         };
