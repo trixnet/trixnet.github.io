@@ -142,8 +142,9 @@ Array.prototype.insert=function(index,item){
 		};
 	};
         function mycan(event){
-		if(navigator.userAgent.search("Chrom")==-1)
+		if(navigator.userAgent.search("Chrom")==-1){
 			alert("use chrome/chromium for better experience");
+			document.getElementById("browseralert").style.display="inline-block";};
     		var c = document.getElementById("colorcanvas");
     		var ctx = c.getContext("2d");
     		var img = document.getElementById("colormap");
