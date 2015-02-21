@@ -148,7 +148,23 @@ Array.prototype.insert=function(index,item){
     		var c = document.getElementById("colorcanvas");
     		var ctx = c.getContext("2d");
     		var img = document.getElementById("colormap");
-    		ctx.drawImage(img,10,10);};
+    		ctx.drawImage(img,10,10);
+var b_canvas = document.getElementById("grade1");
+var b_context = b_canvas.getContext("2d");
+b_context.fillStyle="black";
+b_context.fillRect(0,0,20,20);
+var b_canvas = document.getElementById("grade2");
+var b_context = b_canvas.getContext("2d");
+b_context.fillStyle="red";
+b_context.fillRect(0,0,20,20);
+		var c = document.getElementById("grade1sele");
+                var ctx = c.getContext("2d");
+               var img = document.getElementById("colormap");
+                ctx.drawImage(img,0,0);
+		var c = document.getElementById("grade2sele");
+                var ctx = c.getContext("2d");
+                ctx.drawImage(img,0,0);
+	};
         function setcolor(event){
     		var c = document.getElementById("colorcanvas");
     		var ctx = c.getContext("2d");
@@ -165,3 +181,27 @@ Array.prototype.insert=function(index,item){
         	throw "Invalid color component";
     		return ((r << 16) | (g << 8) | b).toString(16);
     	};
+	function setgradient(x,y){
+		var c = document.getElementById("a");
+		var ctx = c.getContext("2d");
+		var grd = ctx.createLinearGradient(0,100,100,0);
+		grd.addColorStop(0,x);
+		grd.addColorStop(1,y);
+		color=grd;
+	};
+	function show(x){
+		document.getElementById(x).style.display="inline-block";
+		setTimeout(function ok(){document.getElementById(x).style.display="None";},5000);
+	};
+	function setgrad(t,event,x){
+                var c = document.getElementById(t.id);
+                var ctx = c.getContext("2d");
+                x=event.clientX-c.getBoundingClientRect().left;
+                y=event.clientY-c.getBoundingClientRect().top;
+                var p=ctx.getImageData(x, y, 1, 1).data;
+                var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2])).slice(-6);
+		var c = document.getElementById(x);
+		c.value=hex;
+                var ctx = c.getContext("2d");
+                ctx.drawImage(p,0,0);
+        };

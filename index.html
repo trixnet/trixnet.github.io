@@ -23,10 +23,14 @@
 <span id="sizeofbrush">2</span>
 <p id="tooldisplay">No Tool Selected</p>
 <canvas width="500" height="500" id="a" style="border:1px solid #000000; cursor:crosshair;" onmousemove="moveactions(event)"  onmousedown="setstart(event)" onmouseup="setend(event)"></canvas>
-<img id="colormap" src="colormap.gif" alt="The Scream"
+<img id="colormap" src="colormap.gif"
 width="220" height="277" style="display:None;">
 
 <canvas id="colorcanvas" width="245" height="250" onclick="setcolor(event)"></canvas>
-</body>
+<div><canvas style="display:None;"  id="grade1sele" width="245" height="250" onclick="setgrad(this,event,'grade1')"></canvas>
+<canvas id="grade2sele" style="display:None;" width="245" height="250" onclick="setgrad(this,event,'grade2')"></canvas>
+<canvas id="grade1" width="20" value="black" height="20" style="border:1px solid;" onclick="show('grade1sele')"></canvas>
+<canvas id="grade2" value="white" width="20" height="20" style="border:1px solid;" onclick="show('grade2sele')"></canvas>
+</div></body>
 <span id="browseralert" style="color:red; display:None">use chrome/chromium for better experience</span>
 </html>
