@@ -204,7 +204,7 @@ b_context.fillRect(0,0,20,20);
                 var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2])).slice(-6);
 		alert(hex);
 		var c = document.getElementById(x);
-//		c.value=hex;
                 var ctx = c.getContext("2d");
                 ctx.drawImage(img,0,0);
+		return img
         };
