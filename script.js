@@ -61,23 +61,23 @@ Array.prototype.insert=function(index,item){
                 var image=b_canvas.toDataURL();
 		window.open(image,'_blank');
         };
-	function setstart(){
+	function setstart(event){
 		if(tool=="eraser" || tool=="pen")
 			movestate=true;
 		c=document.getElementById("a");
 		cord.sx=event.clientX-c.getBoundingClientRect().left;
 		cord.sy=event.clientY-c.getBoundingClientRect().top;
 	};
-	function setend(){
+	function setend(event){
                 movestate=false;
                 c=document.getElementById("a");
                 cord.ex=event.clientX-c.getBoundingClientRect().left-cord.sx;
                 cord.ey=event.clientY-c.getBoundingClientRect().top-cord.sy;
-		drawshape();
+		drawshape(event);
 		if(tool=="pen" || tool=="eraser")
 			savestate();
         };
-	function drawshape(){
+	function drawshape(event){
 		var b_canvas = document.getElementById("a");
                 var b_context = b_canvas.getContext("2d");
 		b_context.fillStyle=color;
@@ -126,7 +126,7 @@ Array.prototype.insert=function(index,item){
                 var b_canvas = document.getElementById("a");
                 b_canvas.width = b_canvas.width;
         };
-	function moveactions(){
+	function moveactions(event){
 		var bcan = document.getElementById("a");
                 var b = bcan.getContext("2d");
 		ps=pointersize;
@@ -141,12 +141,12 @@ Array.prototype.insert=function(index,item){
                         b.fillRect(x,y,ps,ps);
 		};
 	};
-        function mycan(){
+        function mycan(event){
     		var c = document.getElementById("colorcanvas");
     		var ctx = c.getContext("2d");
     		var img = document.getElementById("colormap");
     		ctx.drawImage(img,10,10);};
-        function setcolor(){
+        function setcolor(event){
     		var c = document.getElementById("colorcanvas");
     		var ctx = c.getContext("2d");
     		var img = document.getElementById("colormap");

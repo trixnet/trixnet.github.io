@@ -1,8 +1,9 @@
+<html>
 <title>PaintApp-js</title>
 <div><head>PaintApp
 <script src="script.js"></script>
 </head></div>
-<body onload="mycan()">
+<body onload="mycan(event)">
 <input type="submit" name="rect" value="rect" onclick="settool('rect')">
 <input type="submit" name="filledcircle" value="filledcircle" onclick="settool('filledcircle')">
 <input type="submit" name="circle" value="circle" onclick="settool('circle')">
@@ -21,11 +22,11 @@
 <input type="range" min="0.5" max="100" value="2" step="0.5" onchange="setsize(this.value)" />
 <span id="sizeofbrush">2</span>
 <p id="tooldisplay">No Tool Selected</p>
-<canvas width="500" height="500" id="a" style="border:1px solid #000000; cursor:crosshair;" onmousemove="moveactions()"  onmousedown="setstart()" onmouseup="setend()"></canvas>
+<canvas width="500" height="500" id="a" style="border:1px solid #000000; cursor:crosshair;" onmousemove="moveactions(event)"  onmousedown="setstart(event)" onmouseup="setend(event)"></canvas>
 <img id="colormap" src="colormap.gif" alt="The Scream"
 width="220" height="277" style="display:None;">
 
-<canvas id="colorcanvas" width="245" height="250" onclick="setcolor()"></canvas>
+<canvas id="colorcanvas" width="245" height="250" onclick="setcolor(event)"></canvas>
 </body>
 <div style="color:red;">Use Chromium or Chrome</div>
-
+</html>
