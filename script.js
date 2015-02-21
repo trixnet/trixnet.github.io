@@ -182,6 +182,7 @@ b_context.fillRect(0,0,20,20);
     		return ((r << 16) | (g << 8) | b).toString(16);
     	};
 	function setgradient(){
+		document.getElementById("colorcanvas").style.display="inline-block";
 		var x=document.getElementById("grade1").innerHTML;
 		var y=document.getElementById("grade2").innerHTML;
 		var c = document.getElementById("a");
@@ -192,12 +193,14 @@ b_context.fillRect(0,0,20,20);
 		color=grd;
 	};
 	function show(x){
+		document.getElementById("colorcanvas").style.display="None";
 		if(x=='grade2sele')
 			document.getElementById("grade1sele").style.display="None";
 		else
 			document.getElementById("grade2sele").style.display="None";
 		document.getElementById(x).style.display="inline-block";
-		setTimeout(function ok(){document.getElementById(x).style.display="None";},5000);
+		setTimeout(function ok(){document.getElementById(x).style.display="None";
+document.getElementById("colorcanvas").style.display="inline-block";},6000);
 	};
 	function setgrad(t,event,box){
                 var c = document.getElementById(t.id);
@@ -206,7 +209,7 @@ b_context.fillRect(0,0,20,20);
                 y=event.clientY-c.getBoundingClientRect().top;
                 var p=ctx.getImageData(x, y, 1, 1).data;
                 var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2])).slice(-6);
-		alert(hex);
+		color=hex;
 		var c = document.getElementById(box);
 		c.innerHTML=hex;
                 var ctx = c.getContext("2d");
