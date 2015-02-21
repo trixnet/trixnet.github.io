@@ -8,6 +8,11 @@ Array.prototype.insert=function(index,item){
 	var savepoints=[];
 	var savecount=-1;
 	var pointersize=1;
+	var ol=[];
+	function ollist(){
+		var x=JSON.stringify(ol);
+		alert(x);
+	};
 	function setsize(value){
 		pointersize=value;
 		document.getElementById("sizeofbrush").innerHTML=pointersize;
@@ -87,9 +92,11 @@ Array.prototype.insert=function(index,item){
 		if(tool=="rect"){
 			b_context.strokeRect(cord.sx,cord.sy,cord.ex,cord.ey);
 			b_context.stroke();
+			ol.push({type:'rectangle',start:[cord.sx,cord.sy],spec:[cord.ex,cord.ey],color:color});
 		};
 		if(tool=="fillrecr"){
                         b_context.fillRect(cord.sx,cord.sy,cord.ex,cord.ey);
+			ol.push({type:'fillrectangle',start:[cord.sx,cord.sy],spec:[cord.ex,cord.ey],color:color});
                 };
 		if(tool=="circle" || tool=="filledcircle"){
 		       var radius=Math.sqrt(Math.pow(cord.ex,2)+Math.pow(cord.ey,2));
@@ -99,6 +106,7 @@ Array.prototype.insert=function(index,item){
 		       		b_context.stroke();
 		       else
 				b_context.fill();
+			ol.push({type:tool,centre:[cord.sx,cord.sy],radius:radius,color:color});
                 };
 		if(tool=="text"){
 			var text=document.getElementById("textbox").value;
@@ -110,6 +118,7 @@ Array.prototype.insert=function(index,item){
 			else
 				b_context.textBaseline = "bottom";
 			b_context.fillText(text,cord.sx,cord.sy);
+			ol.push({type:tool,start:[cord.sx,cord.sy],size:size,color:color,content:text});
 		};
 		if(tool=="line"){
                 	x=event.clientX-c.getBoundingClientRect().left;
@@ -117,6 +126,7 @@ Array.prototype.insert=function(index,item){
 			b_context.moveTo(cord.sx,cord.sy);
 			b_context.lineTo(x,y);
 			b_context.stroke();
+			ol.push({type:tool,start:[cord.sx,cord.sy],end:[x,y],color:color});
 			b_context.closePath();
 		};
 		if(tool!="pen" && tool!="eraser")
