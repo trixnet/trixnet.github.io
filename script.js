@@ -199,12 +199,10 @@ b_context.fillRect(0,0,20,20);
                 x=event.clientX-c.getBoundingClientRect().left;
                 y=event.clientY-c.getBoundingClientRect().top;
                 var p=ctx.getImageData(x, y, 1, 1).data;
-		var img=new Image();
-		img.src=p;
                 var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2])).slice(-6);
 		alert(hex);
 		var c = document.getElementById(x);
                 var ctx = c.getContext("2d");
-                ctx.drawImage(img,0,0);
-		return img
+                ctx.fillStyle=hex;
+		ctx.fillRect(0,0,20,20);
         };
