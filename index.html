@@ -29,8 +29,10 @@ width="220" height="277" style="display:None;">
 <canvas id="colorcanvas" width="245" height="250" onclick="setcolor(event)"></canvas>
 <div><canvas style="display:None;"  id="grade1sele" width="245" height="250" onclick="setgrad(this,event,'grade1')"></canvas>
 <canvas id="grade2sele" style="display:None;" width="245" height="250" onclick="setgrad(this,event,'grade2')"></canvas>
-<canvas id="grade1" width="20" value="black" height="20" style="border:1px solid;" onclick="show('grade1sele')"></canvas>
-<canvas id="grade2" value="white" width="20" height="20" style="border:1px solid;" onclick="show('grade2sele')"></canvas>
-</div></body>
+<canvas id="grade1" width="20" value="black" height="20" style="border:1px solid;" onclick="show('grade1sele')">black</canvas>
+<canvas id="grade2" value="white" width="20" height="20" style="border:1px solid;" onclick="show('grade2sele')">white</canvas>
+</div>
+<input type="submit" value="usegradient" onclick="setgradient()">
+</body>
 <span id="browseralert" style="color:red; display:None">use chrome/chromium for better experience</span>
 </html>

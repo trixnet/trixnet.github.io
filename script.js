@@ -181,7 +181,9 @@ b_context.fillRect(0,0,20,20);
         	throw "Invalid color component";
     		return ((r << 16) | (g << 8) | b).toString(16);
     	};
-	function setgradient(x,y){
+	function setgradient(){
+		var x=document.getElementById("grade1").innerHTML;
+		var y=document.getElementById("grade2").innerHTML;
 		var c = document.getElementById("a");
 		var ctx = c.getContext("2d");
 		var grd = ctx.createLinearGradient(0,100,100,0);
@@ -190,6 +192,10 @@ b_context.fillRect(0,0,20,20);
 		color=grd;
 	};
 	function show(x){
+		if(x=='grade2sele')
+			document.getElementById("grade1sele").style.display="None";
+		else
+			document.getElementById("grade2sele").style.display="None";
 		document.getElementById(x).style.display="inline-block";
 		setTimeout(function ok(){document.getElementById(x).style.display="None";},5000);
 	};
@@ -202,7 +208,7 @@ b_context.fillRect(0,0,20,20);
                 var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2])).slice(-6);
 		alert(hex);
 		var c = document.getElementById(box);
-		c.value=hex;
+		c.innerHTML=hex;
                 var ctx = c.getContext("2d");
                 ctx.fillStyle=hex;
 		ctx.fillRect(0,0,20,20);
