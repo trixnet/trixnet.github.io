@@ -155,7 +155,7 @@ b_context.fillStyle="black";
 b_context.fillRect(0,0,20,20);
 var b_canvas = document.getElementById("grade2");
 var b_context = b_canvas.getContext("2d");
-b_context.fillStyle="red";
+b_context.fillStyle="white";
 b_context.fillRect(0,0,20,20);
 		var c = document.getElementById("grade1sele");
                 var ctx = c.getContext("2d");
