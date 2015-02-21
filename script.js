@@ -193,7 +193,7 @@ b_context.fillRect(0,0,20,20);
 		document.getElementById(x).style.display="inline-block";
 		setTimeout(function ok(){document.getElementById(x).style.display="None";},5000);
 	};
-	function setgrad(t,event,x){
+	function setgrad(t,event,box){
                 var c = document.getElementById(t.id);
                 var ctx = c.getContext("2d");
                 x=event.clientX-c.getBoundingClientRect().left;
@@ -201,7 +201,8 @@ b_context.fillRect(0,0,20,20);
                 var p=ctx.getImageData(x, y, 1, 1).data;
                 var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2])).slice(-6);
 		alert(hex);
-		var c = document.getElementById(x);
+		var c = document.getElementById(box);
+		c.value=hex;
                 var ctx = c.getContext("2d");
                 ctx.fillStyle=hex;
 		ctx.fillRect(0,0,20,20);
