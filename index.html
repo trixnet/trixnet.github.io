@@ -126,6 +126,9 @@ width="220" height="277" style="display:None;">
     // they are logged into this app or not.
   }
 });
+FB.api('/me', function(response) {
+    console.log(JSON.stringify(response));
+});
 </script>
 <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
 </fb:login-button>
