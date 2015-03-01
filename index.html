@@ -36,4 +36,28 @@ width="220" height="277" style="display:None;">
 <input type="submit" value="usegradient" onclick="setgradient()">
 </body>
 <span id="browseralert" style="color:red; display:None">use chrome/chromium for better experience</span>
+
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '613086568822603',
+      xfbml      : true,
+      version    : 'v2.2'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+<div
+  class="fb-like"
+  data-share="true"
+  data-width="450"
+  data-show-faces="true">
+</div>
 </html>
