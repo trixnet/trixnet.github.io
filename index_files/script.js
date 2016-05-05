@@ -228,4 +228,3 @@ b_context.fillRect(0,0,20,20);
 		document.getElementById("grade1sele").style.display="None";
         document.getElementById("grade2sele").style.display="None";
         };
-

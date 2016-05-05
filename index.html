@@ -1,32 +1,33 @@
-<html>
-  <head>
+
+<!-- saved from url=(0039)https://safe-hamlet-4318.herokuapp.com/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>PaintApp-js</title>
     <title>microblog</title>
-  </head>
-  <body>
-    <div>PaintApp <a href="/index">Home</a></div>
+  <style type="text/css"></style></head>
+  <body onload="mycan(event)" onkeydown="undoredo(event)">
+    <div>PaintApp <a href="https://safe-hamlet-4318.herokuapp.com/index">Home</a></div>
     <hr>
     
       
     
     
-<head>
-<script src="/static/saveimage.db.js"></script>
-<script src="/static/script.js"></script>
-<script src="/static/load.js"></script>
-<script src="/static/jquery.min.js"></script>
-</head>
-<body onload="mycan(event)" onkeydown="undoredo(event)">
-<input type="submit" name="rect" value="rectangle" onclick="settool('rectangle')">
-<input type="submit" name="filledcircle" value="filledcircle" onclick="settool('filledcircle')">
-<input type="submit" name="circle" value="circle" onclick="settool('circle')">
-<input type="submit" name="fillrect" value="fillrectangle" onclick="settool('fillrectangle')">
-<input type="submit" name="line" value="line" onclick="settool('line')">
-<input type="submit" name="text" value="text" onclick="settool('text')">
+
+<script src="./index_files/saveimage.db.js"></script>
+<script src="./index_files/script.js"></script>
+<script src="./index_files/load.js"></script>
+<script src="./index_files/jquery.min.js"></script>
+
+
+<input type="submit" name="rect" value="rectangle" onclick="settool(&#39;rectangle&#39;)">
+<input type="submit" name="filledcircle" value="filledcircle" onclick="settool(&#39;filledcircle&#39;)">
+<input type="submit" name="circle" value="circle" onclick="settool(&#39;circle&#39;)">
+<input type="submit" name="fillrect" value="fillrectangle" onclick="settool(&#39;fillrectangle&#39;)">
+<input type="submit" name="line" value="line" onclick="settool(&#39;line&#39;)">
+<input type="submit" name="text" value="text" onclick="settool(&#39;text&#39;)">
 <input type="text" name="text" id="textbox">
-<input type="submit" name="None" value="None" onclick="settool('None')">
-<input type="submit" name="eraser" value="eraser" onclick="settool('eraser')">
-<input type="submit" name="pen" value="pen" onclick="settool('pen')">
+<input type="submit" name="None" value="None" onclick="settool(&#39;None&#39;)">
+<input type="submit" name="eraser" value="eraser" onclick="settool(&#39;eraser&#39;)">
+<input type="submit" name="pen" value="pen" onclick="settool(&#39;pen&#39;)">
 <input type="submit" value="clearscreen" onclick="clearscreen()">
 <input type="submit" value="download" onclick="save()">
 <input type="submit" value="preview" onclick="preview()">
@@ -35,25 +36,24 @@
 <div>
 <input type="submit" value="object list save" onclick="ollist(0)">
 <input type="submit" value="save as image to db" onclick="imagedb(0)">
-<input type="submit" value="load data from server" onclick="loaddata(document.getElementById('savename'))">
-<input type="text" name="savename" id="savename" onkeyup="suggest(this)" required> <span id="suggestion">suggestions</span></div>
-<input type="range" autocomplete="on" min="0.5" max="100" value="2" step="0.5" onchange="setsize(this.value)" />
+<input type="submit" value="load data from server" onclick="loaddata(document.getElementById(&#39;savename&#39;))">
+<input type="text" name="savename" id="savename" onkeyup="suggest(this)" required=""> <span id="suggestion">suggestions</span></div>
+<input type="range" autocomplete="on" min="0.5" max="100" value="2" step="0.5" onchange="setsize(this.value)">
 <span id="sizeofbrush">2</span>
 <p id="tooldisplay">No Tool Selected</p>
-<canvas width="500" height="500" id="a" style="border:1px solid #000000; cursor:crosshair;" onmousemove="moveactions(event)"  onmousedown="setstart(event)" onmouseup="setend(event)"></canvas>
-<img id="loader" src="static/ajax-loader.gif" width="200px" height="200px" style="display:None;">
-<img id="colormap" src="static/colormap.gif"
-width="220" height="277" style="display:None;">
+<canvas width="500" height="500" id="a" style="border:1px solid #000000; cursor:crosshair;" onmousemove="moveactions(event)" onmousedown="setstart(event)" onmouseup="setend(event)"></canvas>
+<img id="loader" src="./index_files/ajax-loader.gif" width="200px" height="200px" style="display:None;">
+<img id="colormap" src="./index_files/colormap.gif" width="220" height="277" style="display:None;">
 
-<div><canvas style="display:None;"  id="grade1sele" width="245" height="250" onclick="setgrad(this,event,'grade1')"></canvas>
-<canvas id="grade2sele" style="display:None;" width="245" height="250" onclick="setgrad(this,event,'grade2')"></canvas>
-<canvas id="grade1" width="20" value="black" height="20" style="border:1px solid;" onclick="show('grade1sele')">black</canvas>
-<canvas id="grade2" value="white" width="20" height="20" style="border:1px solid;" onclick="show('grade2sele')">white</canvas>
+<div><canvas style="display:None;" id="grade1sele" width="245" height="250" onclick="setgrad(this,event,&#39;grade1&#39;)"></canvas>
+<canvas id="grade2sele" style="display:None;" width="245" height="250" onclick="setgrad(this,event,&#39;grade2&#39;)"></canvas>
+<canvas id="grade1" width="20" value="black" height="20" style="border:1px solid;" onclick="show(&#39;grade1sele&#39;)">black</canvas>
+<canvas id="grade2" value="white" width="20" height="20" style="border:1px solid;" onclick="show(&#39;grade2sele&#39;)">white</canvas>
 <span id="selectedcolor">black</span>
 </div>
 <input type="submit" value="usegradient" onclick="setgradient()">
-</body>
+
 <span id="browseralert" style="color:red; display:None">use chrome/chromium for better experience</span>
 
-  </body>
-</html>
+  
+<iframe frameborder="0" scrolling="no" style="border: 0px; display: none; background-color: transparent;"></iframe><iframe frameborder="0" scrolling="no" style="border: 0px; display: none; position: fixed; right: 10px; bottom: 10px; background-color: transparent;"></iframe><div id="GOOGLE_INPUT_CHEXT_FLAG" input="null" input_stat="{&quot;tlang&quot;:true,&quot;tsbc&quot;:true,&quot;pun&quot;:true,&quot;mk&quot;:false,&quot;ss&quot;:true}" style="display: none;"></div></body></html>

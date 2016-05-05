@@ -104,4 +104,3 @@
 	if(tool!="pen")
                         savestate();
 	};
-
