@@ -1,13 +1,26 @@
 <html>
-<title>PaintApp-js</title>
-<div><head>PaintApp
-<script src="script.js"></script>
-</head></div>
-<body onload="mycan(event)">
-<input type="submit" name="rect" value="rect" onclick="settool('rect')">
+  <head>
+    <title>PaintApp-js</title>
+    <title>microblog</title>
+  </head>
+  <body>
+    <div>PaintApp <a href="/index">Home</a></div>
+    <hr>
+    
+      
+    
+    
+<head>
+<script src="/static/saveimage.db.js"></script>
+<script src="/static/script.js"></script>
+<script src="/static/load.js"></script>
+<script src="/static/jquery.min.js"></script>
+</head>
+<body onload="mycan(event)" onkeydown="undoredo(event)">
+<input type="submit" name="rect" value="rectangle" onclick="settool('rectangle')">
 <input type="submit" name="filledcircle" value="filledcircle" onclick="settool('filledcircle')">
 <input type="submit" name="circle" value="circle" onclick="settool('circle')">
-<input type="submit" name="fillrect" value="fillrect" onclick="settool('fillrecr')">
+<input type="submit" name="fillrect" value="fillrectangle" onclick="settool('fillrectangle')">
 <input type="submit" name="line" value="line" onclick="settool('line')">
 <input type="submit" name="text" value="text" onclick="settool('text')">
 <input type="text" name="text" id="textbox">
@@ -15,121 +28,32 @@
 <input type="submit" name="eraser" value="eraser" onclick="settool('eraser')">
 <input type="submit" name="pen" value="pen" onclick="settool('pen')">
 <input type="submit" value="clearscreen" onclick="clearscreen()">
-<input type="submit" value="save" onclick="save()">
+<input type="submit" value="download" onclick="save()">
 <input type="submit" value="preview" onclick="preview()">
 <input type="submit" value="undo" onclick="undo()">
 <input type="submit" value="redo" onclick="redo()">
-<input type="submit" value="object list" onclick="ollist()">
-<input type="range" min="0.5" max="100" value="2" step="0.5" onchange="setsize(this.value)" />
+<div>
+<input type="submit" value="object list save" onclick="ollist(0)">
+<input type="submit" value="save as image to db" onclick="imagedb(0)">
+<input type="submit" value="load data from server" onclick="loaddata(document.getElementById('savename'))">
+<input type="text" name="savename" id="savename" onkeyup="suggest(this)" required> <span id="suggestion">suggestions</span></div>
+<input type="range" autocomplete="on" min="0.5" max="100" value="2" step="0.5" onchange="setsize(this.value)" />
 <span id="sizeofbrush">2</span>
 <p id="tooldisplay">No Tool Selected</p>
 <canvas width="500" height="500" id="a" style="border:1px solid #000000; cursor:crosshair;" onmousemove="moveactions(event)"  onmousedown="setstart(event)" onmouseup="setend(event)"></canvas>
-<img id="colormap" src="colormap.gif"
+<img id="loader" src="static/ajax-loader.gif" width="200px" height="200px" style="display:None;">
+<img id="colormap" src="static/colormap.gif"
 width="220" height="277" style="display:None;">
 
-<canvas id="colorcanvas" style="display:None" width="245" height="250" onclick="setcolor(event)"></canvas>
 <div><canvas style="display:None;"  id="grade1sele" width="245" height="250" onclick="setgrad(this,event,'grade1')"></canvas>
 <canvas id="grade2sele" style="display:None;" width="245" height="250" onclick="setgrad(this,event,'grade2')"></canvas>
 <canvas id="grade1" width="20" value="black" height="20" style="border:1px solid;" onclick="show('grade1sele')">black</canvas>
 <canvas id="grade2" value="white" width="20" height="20" style="border:1px solid;" onclick="show('grade2sele')">white</canvas>
+<span id="selectedcolor">black</span>
 </div>
 <input type="submit" value="usegradient" onclick="setgradient()">
 </body>
 <span id="browseralert" style="color:red; display:None">use chrome/chromium for better experience</span>
 
-  <script>
-  // This is called with the results from from FB.getLoginStatus().
-  function statusChangeCallback(response) {
-    console.log('statusChangeCallback');
-    console.log(response);
-    // The response object is returned with a status field that lets the
-    // app know the current login status of the person.
-    // Full docs on the response object can be found in the documentation
-    // for FB.getLoginStatus().
-    if (response.status === 'connected') {
-      // Logged into your app and Facebook.
-      testAPI();
-    } else if (response.status === 'not_authorized') {
-      // The person is logged into Facebook, but not your app.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this app.';
-    } else {
-      // The person is not logged into Facebook, so we're not sure if
-      // they are logged into this app or not.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into Facebook.';
-    }
-  }
-
-  // This function is called when someone finishes with the Login
-  // Button.  See the onlogin handler attached to it in the sample
-  // code below.
-  function checkLoginState() {
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
-  }
-
-  window.fbAsyncInit = function() {
-  FB.init({
-    appId      : '613086568822603',
-    cookie     : true,  // enable cookies to allow the server to access 
-                        // the session
-    xfbml      : true,  // parse social plugins on this page
-    version    : 'v2.2' // use version 2.2
-  });
-
-  // Now that we've initialized the JavaScript SDK, we call 
-  // FB.getLoginStatus().  This function gets the state of the
-  // person visiting this page and can return one of three states to
-  // the callback you provide.  They can be:
-  //
-  // 1. Logged into your app ('connected')
-  // 2. Logged into Facebook, but not your app ('not_authorized')
-  // 3. Not logged into Facebook and can't tell if they are logged into
-  //    your app or not.
-  //
-  // These three cases are handled in the callback function.
-
-  FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-  });
-
-  };
-
-  // Load the SDK asynchronously
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-
-  // Here we run a very simple test of the Graph API after login is
-  // successful.  See statusChangeCallback() for when this call is made.
-  function testAPI() {
-    console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
-      console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
-    });
-  }
-  FB.login(function(response) {
-  if (response.status === 'connected') {
-    // Logged into your app and Facebook.
-  } else if (response.status === 'not_authorized') {
-    // The person is logged into Facebook, but not your app.
-  } else {
-    // The person is not logged into Facebook, so we're not sure if
-    // they are logged into this app or not.
-  }
-});
-FB.api('/me', function(response) {
-    console.log(JSON.stringify(response));
-});
-</script>
-<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>
+  </body>
 </html>
