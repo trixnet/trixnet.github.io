@@ -17,7 +17,7 @@
   'use strict';
 
   //Swipe Left Event
-  $(".mdl-layout__content").on("swiperight",function(){
+  $("#map,#pac-input").on("swiperight",function(){
     $(".mdl-layout__drawer-button").click();
   });
   $(".mdl-layout__drawer").on("swipeleft",function(){
