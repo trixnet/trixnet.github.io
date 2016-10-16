@@ -15,10 +15,13 @@
 var dataCacheName = 'Hello-World-v1';
 var cacheName = 'Hello-World-1';
 var filesToCache = [
-  /*'/',
-  '/index.html',
-  '/scripts/app.js',
-  '/styles/inline.css',*/
+  '/',
+  '/styles/material.min.css',
+  '/styles/jquery.mobile.min.css',
+  '/scripts/pouchdb-6.0.7.min.js',
+  '/scripts/material.min.js',
+  '/scripts/jquery.min.js',
+  '/scripts/jquery.mobile.min.js',
 ];
 
 self.addEventListener('install', function(e) {
@@ -57,9 +60,9 @@ self.addEventListener('activate', function(e) {
 });
 
 self.addEventListener('fetch', function(e) {
-  console.log('[Service Worker] Fetch', e.request.url);
-  var dataUrl = 'https://query.yahooapis.com/v1/public/yql';
+  var dataUrl = 'https://maps.googleapis.com/maps/api/place/js';
   if (e.request.url.indexOf(dataUrl) > -1) {
+    console.log('[Service Worker] Fetch/newwwwww', e.request.url);
     /*
      * When the request URL contains dataUrl, the app is asking for fresh
      * weather data. In this case, the service worker always goes to the
@@ -76,15 +79,16 @@ self.addEventListener('fetch', function(e) {
       })
     );
   } else {
+    console.log('[Service Worker] Fetch/cacheee', e.request.url); 
     /*
      * The app is asking for app shell files. In this scenario the app uses the
      * "Cache, falling back to the network" offline strategy:
      * https://jakearchibald.com/2014/offline-cookbook/#cache-falling-back-to-network
      */
-    /*e.respondWith(
+    e.respondWith(
       caches.match(e.request).then(function(response) {
         return response || fetch(e.request);
       })
-    );*/
+    );
   }
 });
