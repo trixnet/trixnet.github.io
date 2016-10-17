@@ -60,7 +60,7 @@ self.addEventListener('activate', function(e) {
 });
 
 self.addEventListener('fetch', function(e) {
-  var dataUrl = 'https://maps.googleapis.com/maps/api/place/js';
+  var dataUrl = 'maps.googleapis.com';
   if (e.request.url.indexOf(dataUrl) > -1) {
     console.log('[Service Worker] Fetch/newwwwww', e.request.url);
     /*
