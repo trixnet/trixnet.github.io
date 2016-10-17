@@ -1,4 +1,6 @@
-nav div a.brand-logo{
-  left:30%;
-  font-size:1.5rem;
+@media only screen and (max-width: 375px){
+  nav div a.brand-logo{
+    left:30%;
+    font-size:1.5rem;
+  }
 }

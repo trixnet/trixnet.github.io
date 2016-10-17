@@ -138,15 +138,17 @@
       function initAutocomplete() {
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: -33.8688, lng: 151.2195},
-          zoom: 13,
+          zoom: 20,
           mapTypeControl: true,
           mapTypeControlOptions: {
             style: google.maps.MapTypeControlStyle.DEFAULT,
-            position: google.maps.ControlPosition.BOTTOM_LEFT,
+            position: google.maps.ControlPosition.LEFT_CENTER,
             mapTypeIds: ['roadmap', "satellite"]
           },
-          zoomControl:true,
-          streetViewControl:true,
+          zoomControl: true,
+          zoomControlOptions: {
+              position: google.maps.ControlPosition.RIGHT_CENTER
+          },
           fullscreenControl: true
         });
         // Create the search box and link it to the UI element.
