@@ -16,20 +16,14 @@
 (function() {
   'use strict';
 
-  //Swipe Left Event
-  $("#map,#pac-input").on("swiperight",function(){
-    $(".mdl-layout__drawer-button").click();
-  });
-  $(".mdl-layout__drawer").on("swipeleft",function(){
-    $(".mdl-layout__obfuscator").click();
-  });
-
   var app = {
     isLoading: true,
     spinner: document.querySelector('.loader'),
     container: document.querySelector('.main')
   };
 
+  //Enable sidebar
+  $(".button-collapse").sideNav();
 
 
   // TODO add service worker code here

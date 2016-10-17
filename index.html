@@ -20,19 +20,14 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hello World!</title>
-  
+  <!--Custom styles -->
   <link rel="stylesheet" type="text/css" href="styles/inline.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" async>
-  <link rel="stylesheet" href="styles/material.min.css">  
-  <script src="scripts/material.min.js"></script>
   
-  <script src="scripts/pouchdb-6.0.7.min.js"></script>
-  
-  <!-- JQUERY libraries -->
-  <script src="scripts/jquery.min.js"></script>
-  <script src="scripts/jquery.mobile.min.js"></script>
-  
+  <!--Import google font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="styles/materialize.min.css"  media="screen,projection"/>
+
   <!-- TODO add manifest here -->
   <link rel="manifest" href="/manifest.json">
   <!-- Add to home screen for Safari on iOS -->
@@ -42,11 +37,48 @@
   <link rel="apple-touch-icon" href="images/icons/icon-152x152.png">
   <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
   <meta name="msapplication-TileColor" content="#000000">
-
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <title>Places Searchbox</title>
-    <style>
+  
+  <title>Hello World!</title>
+
+</head>
+
+<body>
+
+  <!-- PuchDB -->
+  <script src="scripts/pouchdb-6.0.7.min.js"></script>
+  <!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="scripts/materialize.min.js"></script>
+  
+
+  <script src="scripts/app.js" async defer></script>
+
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo">Hello World!</a>
+      <a href="#" data-activates="side-out" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#!"><i class="material-icons">more_vert</i></a></li>
+      </ul>
+
+      <ul id="side-out" class="side-nav">
+        <li><div class="userView">
+          <img class="background" src="images/office.jpg">
+          <a href="#!user"><img class="circle" src="images/user.jpg"></a>
+          <a href="#!name"><span class="white-text name">John Doe</span></a>
+          <a href="#!email"><span class="white-text email">jhon-doe@gmail.com</span></a>
+        </div></li>
+        <li><a href="#!"><i class="material-icons">cloud</i>Login</a></li>
+        <!-- <li><a href="#!">Second Link</a></li> -->
+        <li><div class="divider"></div></li>
+        <!--<li><a class="subheader">Subheader</a></li>-->    
+        <!--<li><a class="waves-effect" href="#!">Third Link With Waves</a></li>-->
+      </ul>
+    </div>
+  </nav>
+
+  <style>
       html, body {
         height: 100%;
         margin: 0;
@@ -95,33 +127,7 @@
         width: 345px;
       }
     </style>
-</head>
-<body>
-
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-  <header class="mdl-layout__header mdl-layout__header--scroll">
-    <div class="mdl-layout__header-row">
-      <span class="mdl-layout-title">Hello World!</span>
-      <div class="mdl-layout-spacer"></div>
-      <nav class="mdl-navigation">
-        <a class="mdl-navigation__link" href=""><i class="material-icons">account_circle</i></a>
-      </nav>
-      <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menu-speed">
-        <li id="login-btn-menu" class="mdl-menu__item">Login</li>
-      </ul>
-      <button id="menu-speed" class="mdl-button mdl-js-button mdl-button--icon mdl-layout--small-screen-only">
-        <i class="material-icons">more_vert</i>
-      </button>
-    </div>
-  </header>
-  <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">Hello World!</span>
-    <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href=""><i class="material-icons">account_circle</i> Login</a>
-    </nav>
-  </div>
-
-  <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
     <div id="map"></div>
     <script>
       // This example adds a search box to a map, using the Google Place Autocomplete
@@ -191,9 +197,7 @@
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2aVd66-_gpjBrFkMGRgbcGzp9Y0bcMWE&libraries=places&callback=initAutocomplete"
          async defer></script>
-</div>
-  <!-- Uncomment the line below when ready to test with fake data -->
-  <script src="scripts/app.js" async></script>
+
 
 </body>
 </html>

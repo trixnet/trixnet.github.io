@@ -22,6 +22,7 @@ var filesToCache = [
   '/scripts/material.min.js',
   '/scripts/jquery.min.js',
   '/scripts/jquery.mobile.min.js',
+  '/scripts/snap.js'
 ];
 
 self.addEventListener('install', function(e) {
