@@ -36,7 +36,7 @@
     });
 
     $(document).ready(function() {
-         $('ul.tabs').tabs('select_tab', 'login_email');
+         $('ul.tabs').tabs('select_tab', 'login-tab');
     });
 
 
