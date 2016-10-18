@@ -31,14 +31,10 @@
         $('.modal-trigger').leanModal({
             ready: function() {
                 $('.button-collapse').sideNav('hide');
+                $('ul.tabs').tabs('select_tab', 'login-tab');
             }
         });
     });
-
-    $(document).ready(function() {
-         $('ul.tabs').tabs('select_tab', 'login-tab');
-    });
-
 
     // TODO add service worker code here
     if ('serviceWorker' in navigator) {
