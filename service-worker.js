@@ -15,7 +15,6 @@
 var dataCacheName = 'Hello-World-v1';
 var cacheName = 'Hello-World-1';
 var filesToCache = [
-  '/',
   '/styles/material.min.css',
   '/styles/jquery.mobile.min.css',
   '/scripts/pouchdb-6.0.7.min.js',

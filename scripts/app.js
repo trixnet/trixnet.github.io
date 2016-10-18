@@ -14,22 +14,36 @@
 
 
 (function() {
-  'use strict';
+    'use strict';
 
-  var app = {
-    isLoading: true,
-    spinner: document.querySelector('.loader'),
-    container: document.querySelector('.main')
-  };
+    var app = {
+        isLoading: true,
+        spinner: document.querySelector('.loader'),
+        container: document.querySelector('.main')
+    };
 
-  //Enable sidebar
-  $(".button-collapse").sideNav();
+    //Enable sidebar
+    $(".button-collapse").sideNav();
+
+    //Enable Login model
+    $(document).ready(function() {
+        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+        $('.modal-trigger').leanModal({
+            ready: function() {
+                $('.button-collapse').sideNav('hide');
+            }
+        });
+    });
+
+    $(document).ready(function() {
+         $('ul.tabs').tabs('select_tab', 'login_email');
+    });
 
 
-  // TODO add service worker code here
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker
-             .register('./service-worker.js')
-             .then(function() { console.log('Service Worker Registered'); });
-  }
+    // TODO add service worker code here
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+            .register('./service-worker.js')
+            .then(function() { console.log('Service Worker Registered'); });
+    }
 })();
