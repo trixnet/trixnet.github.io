@@ -36,6 +36,13 @@
         });
     });
 
+    //Login submit
+    $("#login-form").on("submit",function(){
+        loginValidate().form();
+    	$("#login-progress").toggleClass("hide");
+    	$("#login-submit-btn").prop('disabled', true);
+    });
+
     // TODO add service worker code here
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker
