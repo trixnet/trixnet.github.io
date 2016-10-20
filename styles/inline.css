@@ -1,10 +1,35 @@
-@media only screen and (max-width: 450px){
-  nav div a.brand-logo{
-    left:30%;
-    font-size:1.5rem;
-  }
+@media only screen and (max-width: 450px) {
+    nav div a.brand-logo {
+        left: 30%;
+        font-size: 1.5rem;
+    }
 }
 
-.nav-wrapper{
-  background-color:#2874f0;
+.nav-wrapper {
+    background-color: #2874f0;
+}
+
+label {
+    width: 100%;
+}
+
+label:after {
+    -moz-transition-property: all !important;
+    -o-transition-property: all !important;
+    -webkit-transition-property: all !important;
+    transition-property: all !important;
+    font-size: 0.8rem;
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+    -webkit-transform: none;
+    transform: none;
+}
+
+label:not(.active):after {
+    -moz-transform: translateY(-140%);
+    -ms-transform: translateY(-140%);
+    -o-transform: translateY(-140%);
+    -webkit-transform: translateY(-140%);
+    transform: translateY(-140%);
 }

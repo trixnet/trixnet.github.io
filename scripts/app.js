@@ -37,8 +37,8 @@
     });
 
     //Login submit
-    $("#login-form").on("submit",function(){
-        loginValidate().form();
+    $("#login-form").on("submit",function(e){
+        e.preventDefault();
     	$("#login-progress").toggleClass("hide");
     	$("#login-submit-btn").prop('disabled', true);
     });

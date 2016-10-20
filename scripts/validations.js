@@ -1,6 +1,15 @@
-function loginValidate() {
-
-    return $("#login-form").validate({
+$(document).ready(function() {
+    $('form').validate({
+        errorClass: 'invalid',
+        errorPlacement: function(error, element) {
+            element.next("label").attr("data-error", error.contents().text());
+        }
+    });
+jQuery.validator.setDefaults({
+  debug: true,
+  success: "valid"
+});
+    $("#login-form").validate({
         rules: {
             "login-email": {
                 required: true,
@@ -13,19 +22,14 @@ function loginValidate() {
         },
         //For custom messages
         messages: {
-            email: {
+            "login-email": {
                 required: "Enter a email",
-                minlength: "Enter a valid email"
+                email: "Enter a valid email"
             },
-        },
-        errorElement: 'div',
-        errorPlacement: function(error, element) {
-            var placement = $(element).data('error');
-            if (placement) {
-                $(placement).append(error)
-            } else {
-                error.insertAfter(element);
+            "login-password": {
+                required: "Password required",
+                minlength: "Min length is 5"
             }
         }
     });
-}
+});
