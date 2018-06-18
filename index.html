@@ -1,106 +1,300 @@
 <!DOCTYPE html>
 <html>
+<title>Abhilash KM Resume</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<style>
+  .sidebar {
+    grid-area: sidebar;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--Custom styles -->
-    <link rel="stylesheet" type="text/css" href="styles/inline.css">
-    <!--Import google font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="styles/materialize.min.css" media="screen,projection" />
-    <!-- TODO add manifest here -->
-    <link rel="manifest" href="/manifest.json">
-    <!-- Add to home screen for Safari on iOS -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Hello World!">
-    <link rel="apple-touch-icon" href="images/icons/icon-152x152.png">
-    <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
-    <meta name="msapplication-TileColor" content="#2874f0">
-    <meta name="theme-color" content="#2874f0" id="themeColor">
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <title>Hello World!</title>
-</head>
+  .content {
+    grid-area: content;
+  }
+
+  .footer {
+    grid-area: footer;
+  }
+
+  .profile-skill-fields {
+    display: grid;
+    grid-gap: 1px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    background-color: #fff;
+    color: #444;
+    padding-top: 10px;
+  }
+
+  .profile-skill-name {
+    grid-column: 1 / span 2;
+  }
+
+  .profile-skill-rating {
+    grid-column: 3 / span 2;
+  }
+
+  .profile-image-name {
+    color: black;
+    font-size: 13px;
+  }
+
+  .profile-field-heading {
+    font-size: 25px;
+  }
+
+  .profile-details-fields {
+    padding-top: 15px;
+  }
+
+  .avatar {
+    border-radius: 50%
+  }
+
+  .progressbar {
+    background-color: papayawhip;
+    border-radius: 13px;
+    /* (height of inner div) / 2 + padding */
+    padding: 1px;
+    text-align: center;
+  }
+
+  .progressbar>div {
+    background-color: orange;
+    /* Adjust with JavaScript */
+    height: 15px;
+    border-radius: 10px;
+  }
+
+  @media (max-width: 850px) {
+    .main {
+      grid-template-columns: 1fr;
+      grid-template-areas: "sidebar" "content" "footer";
+    }
+    .profile-details {
+      text-align: center
+    }
+  }
+
+  @media (min-width: 850px) {
+    .main {
+      height: 100vh;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-areas: "sidebar sidebar content content content" "sidebar sidebar content content content" "sidebar  sidebar  footer footer footer";
+    }
+  }
+
+  .main {
+    grid-gap: 10px;
+    color: black;
+    display: grid;
+  }
+
+
+  .box {
+    border-radius: 1px;
+    padding: 10px;
+    -webkit-box-shadow: 0px 4px 10px -2px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 4px 10px -2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+  }
+
+  .content-heading {
+    font-size: 32px;
+    padding-bottom: 10px;
+  }
+
+  .experience {
+    padding: 15px;
+  }
+
+  .experience-head {
+    font-size: 25px;
+    padding-bottom: 10px;
+  }
+
+  .experience-duration {
+    font-size: 16px;
+    padding-bottom: 7px;
+  }
+
+  .social-media {
+    text-align: center;
+  }
+</style>
 
 <body>
+  <div class="main">
+    <div class="box sidebar">
+      <div class="profile-details">
 
-    <!-- PuchDB -->
-    <script src="scripts/pouchdb-6.0.7.min.js"></script>
-    <!--Import jQuery before materialize.js-->
-    <script type="text/javascript" src="scripts/jquery.min.js"></script>
-    <script type="text/javascript" src="scripts/jquery.validate.min.js"></script>
 
-    <script type="text/javascript" src="scripts/materialize.min.js"></script>
-    <script src="scripts/app.js" async defer></script>
-	
-	<script src="scripts/validations.js"></script>
-    <nav>
-        <div class="nav-wrapper">
-            <a href="#!" class="brand-logo">Hello World!</a>
-            <a href="#" data-activates="side-out" class="button-collapse waves-effect waves-light"><i class="material-icons">menu</i></a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="#!"><i class="material-icons waves-effect waves-light">more_vert</i></a></li>
-            </ul>
-            <ul id="side-out" class="side-nav">
-                <li>
-                    <div class="userView">
-                        <img class="background" src="images/office.jpg">
-                        <a href="#"><img class="circle" src="images/user.jpg"></a>
-                        <a href="#"><span class="white-text name">Guest</span></a>
-                        <a href="#"><span class="white-text email"></span></a>
-                    </div>
-                </li>
-                <li><a class="modal-trigger waves-effect waves-light" href="#login-modal"><i class="material-icons">cloud</i>Login</a></li>
-                <!-- <li><a href="#!">Second Link</a></li> -->
-                <li>
-                    <div class="divider"></div>
-                </li>
-                <!--<li><a class="subheader">Subheader</a></li>-->
-                <!--<li><a class="waves-effect" href="#!">Third Link With Waves</a></li>-->
-            </ul>
+        <div class="profile-image">
+          <img class="avatar" src="https://secure.gravatar.com/avatar/2fee84201703419eb3b8f3e1888d9f46?s=800&d=identicon" style="width:40%"
+            alt="Avatar">
+          <div class="profile-image-name">
+            <h2>Abhilash KM</h2>
+          </div>
         </div>
-    </nav>
-    <div id="login-modal" class="modal modal-fixed-footer">
-        <div class="modal-content">
-            <h4>Login/Signup</h4>
-            <div id="login-progress" class="progress hide">
-                <div class="indeterminate"></div>
-            </div>
-            <div class="col s12">
-                <ul class="tabs">
-                    <li class="tab col s3"><a class="active" href="#login-tab">Login</a></li>
-                    <li class="tab col s3"><a href="#signup-tab">Signup</a></li>
-                </ul>
-            </div>
-            <div id="login-tab" class="col s12">
-                <form id="login-form" class="col s12">
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix">email</i>
-                        <input id="login_email" name="login-email" type="email" class="validate" required>
-                        <label for="login_email">Email</label>
-                    </div>
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix">lock_outline</i>
-                        <input id="login_password" name="login_password" type="password" class="validate required minlength" required>
-                        <label for="login_password">Password</label>
-                    </div>
-                    <button id="login-submit-btn" class="btn waves-effect waves-light" type="submit" name="action">Submit
-                        <i class="material-icons right">send</i>
-                    </button>
-                </form>
-            </div>
-            <div id="signup-tab" class="col s12"></div>
+        <div class="profile-details-fields">
+          <span>
+            <i class="material-icons" style="vertical-align: middle">card_travel</i>
+            Software Engineer
+          </span>
         </div>
+        <div class="profile-details-fields">
+          <span>
+            <i class="material-icons" style="vertical-align: middle">home</i>
+            Kerala, India
+          </span>
+        </div>
+        <div class="profile-details-fields">
+          <span>
+            <i class="material-icons" style="vertical-align: middle">email</i>
+            aaabhilash97@gmail.com
+          </span>
+        </div>
+        <div class="profile-details-fields">
+          <span>
+            <i class="material-icons" style="vertical-align: middle">phone</i>
+            +919895774319
+          </span>
+        </div>
+      </div>
+      <hr>
+      <div class="profile-field-heading">
+        <span>
+          <i class="material-icons" style="vertical-align: middle">assessment</i>
+          Skills
+        </span>
+      </div>
+      <br>
+
+      <div class="profile-skill-fields">
+        <div class="profile-skill-name">
+          <i class="material-icons" style="vertical-align: middle">radio_button_checked</i>
+          Javascript & Node.js
+
+        </div>
+        <div class="profile-skill-rating">
+          <div class="progressbar">
+            <div style="width: 90%;">
+              90%
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-skill-fields">
+        <div class="profile-skill-name">
+          <i class="material-icons" style="vertical-align: middle">radio_button_checked</i>
+          Python
+
+        </div>
+        <div class="profile-skill-rating">
+          <div class="progressbar">
+            <div style="width: 70%;">
+              70%
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <link rel="stylesheet" type="text/css" href="styles/maps.css">
-    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-    <div id="map"></div>
-    <!--Map Controllers-->
-    <script type="text/javascript" src="scripts/maps.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2aVd66-_gpjBrFkMGRgbcGzp9Y0bcMWE&libraries=places&callback=initAutocomplete" async defer></script>
+
+    <div class="box content">
+      <div class="content-heading">
+        <i class="material-icons" style="vertical-align: middle">card_travel</i>
+        Work Experience
+      </div>
+      <div class="experience">
+        <div class="experience-head">
+          Software Engineer @ Smartron India Pvt Ltd.
+        </div>
+        <div class="experience-duration">
+          <i class="material-icons" style="vertical-align: middle">date_range</i>
+          Dec 2016 - Present
+        </div>
+        <div class="experience-description">
+          Handling multiple projects on multiple domains, like IOT backend, cloud storage etc.
+        </div>
+      </div>
+
+      <div class="experience">
+        <div class="experience-head">
+          Software Engineer @ Option3.io.
+        </div>
+        <div class="experience-duration">
+          <i class="material-icons" style="vertical-align: middle">date_range</i>
+          May 2016 - Dec 2016
+        </div>
+        <div class="experience-description">
+          <p>
+            Software developer in Test Automation tool JIFFY. Helped the tool to improve by features and bug fixing.
+          </p>
+          <p>
+            Technologies involved: Javascript, Python, Django, Backbone.js, Oracle.
+          </p>
+        </div>
+      </div>
+
+      <div class="experience">
+        <div class="experience-head">
+          Technical Consultant @ Wintlt & Mobizippy.
+        </div>
+        <div class="experience-duration">
+          <i class="material-icons" style="vertical-align: middle">date_range</i>
+          Apr 2015 - Apr 2016
+        </div>
+        <div class="experience-description">
+          <p>MobiZippy is a platform that lets eCommerce merchants very quickly and affordably create world-class mobile commerce
+            apps targeting the most prominent platforms. In record time, MobiZippy provides eCommerce merchants with a full-fledged,
+            comprehensive mobile strategy.
+          </p>
+          <p>
+            Learned Node.js and Javascript and worked for the console and Magento, Opencart drivers for Mobizippy. Integrated multiple
+            payment gateways such as EBS, Paytm, CCAvenue etc. with our product. Automated HTML5 application creation process
+            and deployed application with Nginx, AWS route53 and AWS CloudFront.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="box footer">
+      <div class="social-media">
+        <div class="social-media-head">
+          Find Me On Social Media
+        </div>
+        <a href="https://github.com/aaabhilash97">
+          <svg height="20" width="20" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" aria-hidden="true">
+            <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/in/abhilash-km/">
+          <svg height="20" width="20" preserveAspectRatio="xMinYMin meet" focusable="false" xmlns="http://www.w3.org/2000/svg">
+            <g class="scaling-icon" style="fill-opacity: 1">
+              <defs></defs>
+              <g class="bug-21dp" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g class="dp-1">
+                  <path d="M19.479,0 L1.583,0 C0.728,0 0,0.677 0,1.511 L0,19.488 C0,20.323 0.478,21 1.333,21 L19.229,21 C20.086,21 21,20.323 21,19.488 L21,1.511 C21,0.677 20.336,0 19.479,0"
+                    class="bug-text-color" fill="#FFFFFF"></path>
+                  <path d="M19.479,0 L1.583,0 C0.728,0 0,0.677 0,1.511 L0,19.488 C0,20.323 0.478,21 1.333,21 L19.229,21 C20.086,21 21,20.323 21,19.488 L21,1.511 C21,0.677 20.336,0 19.479,0 Z M8,8 L10.827,8 L10.827,9.441 L10.858,9.441 C11.289,8.664 12.562,7.875 14.136,7.875 C17.157,7.875 18,9.479 18,12.45 L18,18 L15,18 L15,12.997 C15,11.667 14.469,10.5 13.227,10.5 C11.719,10.5 11,11.521 11,13.197 L11,18 L8,18 L8,8 Z M3,18 L6,18 L6,8 L3,8 L3,18 Z M6.375,4.5 C6.375,5.536 5.536,6.375 4.5,6.375 C3.464,6.375 2.625,5.536 2.625,4.5 C2.625,3.464 3.464,2.625 4.5,2.625 C5.536,2.625 6.375,3.464 6.375,4.5 Z"
+                    class="background" fill="#0077B5"></path>
+                </g>
+                <g class="dpi-gt1" transform="scale(0.4375)">
+                  <rect class="bug-text-color" fill="#FFFFFF" x="1" y="1" width="46" height="46" rx="4"></rect>
+                  <path d="M0,4.00989318 C0,1.79529033 1.79405245,0 4.00989318,0 L43.9901068,0 C46.2047097,0 48,1.79405245 48,4.00989318 L48,43.9901068 C48,46.2047097 46.2059475,48 43.9901068,48 L4.00989318,48 C1.79529033,48 0,46.2059475 0,43.9901068 L0,4.00989318 Z M19,18.3 L25.5,18.3 L25.5,21.566 C26.437,19.688 28.838,18 32.445,18 C39.359,18 41,21.738 41,28.597 L41,41.3 L34,41.3 L34,30.159 C34,26.253 33.063,24.05 30.68,24.05 C27.375,24.05 26,26.425 26,30.159 L26,41.3 L19,41.3 L19,18.3 Z M7,41 L14,41 L14,18 L7,18 L7,41 Z M15,10.5 C15,12.985 12.985,15 10.5,15 C8.015,15 6,12.985 6,10.5 C6,8.015 8.015,6 10.5,6 C12.985,6 15,8.015 15,10.5 Z"
+                    class="background" fill="#0077B5"></path>
+                </g>
+              </g>
+            </g>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>
